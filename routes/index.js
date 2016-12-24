@@ -23,7 +23,7 @@ router.get('/new/:url(*)', function(req, res) {
             if (validUrl.isUri(url)) {
                 var short = 'https://url-shortener1.herokuapp.com/' + shortid.generate().replace(/\D/g, '');
                 var newLink = {original_url: url, short_url: short};
-                var display = {original_url: url, short_url: short}; // collection.insert will ad an id so create another copy to display
+                var display = {original_url: url, short_url: short}; // collection.insert will add an id so create another copy to display
                 collection.insert(newLink, function(err, data) {
                     if (err) throw err;
                     res.send(JSON.stringify(display));
